@@ -1,0 +1,14 @@
+
+> mfs-frontend@0.0.0 dev
+> vite --port 4001 --host 0.0.0.0
+
+
+  [32m[1mVITE[22m v4.5.14[39m  [2mready in [0m[1m656[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4001[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.13.51.96:[1m4001[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh[22m[2m to show help[22m
+(node:29432) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2mPM 3:01:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/@fs/E:/AI/mfs/frontend/src/views/CardUsageView.vue[22m
+[2mPM 3:05:40[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/@fs/E:/AI/mfs/frontend/src/views/BudgetView.vue[22m

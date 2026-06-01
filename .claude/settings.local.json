@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Bash(for d:*)",
+      "Bash(do echo:*)",
+      "Read(//e/AI/mfs/**)",
+      "Bash(done)"
+    ]
+  }
+}
