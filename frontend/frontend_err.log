@@ -1,0 +1,73 @@
+(node:37664) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2mPM 1:45:56[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/notices/notices:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:00[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:01[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:01[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:01[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:02[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:02[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:02[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:02[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:20[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:23[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:36[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 1:46:37[22m [31m[1m[vite][22m[39m [31mhttp proxy error at /api/v1/auth/login:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1142:49)
+    at afterConnectMultiple (node:net:1723:7)
+[2mPM 2:06:11[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/AI/mfs/frontend/src/views/HomeView.vue?vue&type=style&index=0&scoped=b4e148ca&lang.css:121:3: Unknown word searchPernr[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/AI/mfs/frontend/src/views/HomeView.vue?vue&type=style&index=0&scoped=b4e148ca&lang.css[39m:342:3
+[33m  119|    outline: none;
+  120|    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  121|    searchPernr
+     |     ^
+  122|  }
+  123|  [39m
+      at Input.error (E:\AI\mfs\frontend\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unknownWord (E:\AI\mfs\frontend\node_modules\postcss\lib\parser.js:595:22)
+      at Parser.other (E:\AI\mfs\frontend\node_modules\postcss\lib\parser.js:437:12)
+      at Parser.parse (E:\AI\mfs\frontend\node_modules\postcss\lib\parser.js:472:16)
+      at parse (E:\AI\mfs\frontend\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\AI\mfs\frontend\node_modules\postcss\lib\lazy-result.js:165:16)
+      at Processor.process (E:\AI\mfs\frontend\node_modules\postcss\lib\processor.js:53:14)
+      at compileCSS (file:///E:/AI/mfs/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:38904:63)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TransformContext.transform (file:///E:/AI/mfs/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:38301:56)

@@ -26,6 +26,12 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/card-usage-summary',
+      name: 'card-usage-summary',
+      component: () => import('../views/CardUsageSummaryView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/budget',
       name: 'budget',
       component: () => import('../views/BudgetView.vue'),

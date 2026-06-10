@@ -2,15 +2,19 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from datetime import timedelta
+from pydantic import BaseModel
 from app.db.session import get_db
 from app.models.models import User
 from app.schemas.schemas import Token, UserCreate
-from app.core.auth import authenticate_user, create_access_token, get_password_hash
+from app.core.auth import authenticate_user, create_access_token, get_password_hash, get_current_user
 from app.core.config import settings
 
 router = APIRouter()
 
 from app.core.mssql import get_mssql_user_info, authenticate_mssql_user
+
+class DelegateRequest(BaseModel):
+    target_pernr: str
 
 @router.post("/login", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
@@ -65,9 +69,42 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     )
     
     return {
-        "access_token": access_token, 
+        "access_token": access_token,
         "token_type": "bearer",
         "kor_nm": target_info.get("KOR_NM"),
         "company_nm": target_info.get("COMPANY_NM"),
         "is_admin": is_admin
+    }
+
+
+@router.post("/delegate")
+async def delegate_target_user(
+    body: DelegateRequest,
+    current_user = Depends(get_current_user)
+):
+    """관리자 전용: 조회 대상 사번을 변경한 새 토큰을 발급합니다."""
+    if not current_user.is_admin:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="관리자만 사용할 수 있습니다.")
+
+    pernr = body.target_pernr.strip().upper()
+    target_info = get_mssql_user_info(pernr)
+    if not target_info:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="해당 사번의 사용자를 찾을 수 없습니다.")
+
+    access_token = create_access_token(
+        data={
+            "sub": current_user.username,
+            "target_pernr": pernr,
+            "is_admin": True
+        },
+        expires_delta=timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    )
+
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "kor_nm": target_info.get("KOR_NM"),
+        "company_nm": target_info.get("COMPANY_NM"),
+        "target_pernr": pernr,
+        "is_admin": True
     }

@@ -29,6 +29,20 @@
           </div>
           
           <div class="header-actions">
+            <div v-if="isAdmin" class="admin-search-group">
+              <input
+                v-model="searchPernr"
+                type="text"
+                placeholder="사번 입력"
+                class="pernr-input"
+                maxlength="10"
+                @keyup.enter="searchByPernr"
+              />
+              <button @click="searchByPernr" class="glass-btn search" :disabled="searching" title="사번으로 조회">
+                <span class="icon">🔍</span>
+                <span class="label">{{ searching ? '조회 중' : '조회' }}</span>
+              </button>
+            </div>
             <button v-if="isAdmin" @click="navigateTo('admin')" class="glass-btn admin" title="관리 시스템">
               <span class="icon">⚙️</span>
               <span class="label">시스템 관리</span>
@@ -61,8 +75,22 @@
             </div>
           </div>
 
+          <!-- 1-5. 법인카드 요약 현황 -->
+          <div class="service-item animate-stagger-2" @click="navigateTo('card-usage-summary')">
+            <div class="card-glass-content">
+              <div class="card-top">
+                <div class="icon-box success" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.3);">📈</div>
+                <div class="arrow-circle">→</div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">법인카드 요약 현황</h3>
+                <p class="card-desc">비용계정별 총액 및 사용 건수를 월별/기간별로 요약하여 제공합니다.</p>
+              </div>
+            </div>
+          </div>
+
           <!-- 2. 예산 관리 -->
-          <div class="service-item animate-stagger-2" @click="navigateTo('budget')">
+          <div class="service-item animate-stagger-3" @click="navigateTo('budget')">
             <div class="card-glass-content">
               <div class="card-top">
                 <div class="icon-box secondary">📊</div>
@@ -76,7 +104,7 @@
           </div>
 
           <!-- 3. 담당자 연락처 -->
-          <div class="service-item animate-stagger-3" @click="navigateTo('contacts')">
+          <div class="service-item animate-stagger-4" @click="navigateTo('contacts')">
             <div class="card-glass-content">
               <div class="card-top">
                 <div class="icon-box info">📞</div>
@@ -90,7 +118,7 @@
           </div>
 
           <!-- 4. 공지사항 -->
-          <div class="service-item animate-stagger-4" @click="navigateTo('notices')">
+          <div class="service-item animate-stagger-5" @click="navigateTo('notices')">
             <div class="card-glass-content">
               <div class="card-top">
                 <div class="icon-box warning">🔔</div>
@@ -130,6 +158,36 @@ const latestNotice = computed(() => notices.value[0] || null)
 const korNm = ref(localStorage.getItem('kor_nm') || 'Neo')
 const companyNm = ref(localStorage.getItem('company_nm') || '')
 const isAdmin = ref(localStorage.getItem('is_admin') === 'true')
+
+const searchPernr = ref('')
+const searching = ref(false)
+
+const searchByPernr = async () => {
+  const pernr = searchPernr.value.trim()
+  if (!pernr) return
+  searching.value = true
+  try {
+    const res = await axios.post('/api/v1/auth/delegate', { target_pernr: pernr })
+    const { access_token, kor_nm, company_nm } = res.data
+    localStorage.setItem('token', access_token)
+    localStorage.setItem('kor_nm', kor_nm)
+    localStorage.setItem('company_nm', company_nm || '')
+    axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
+    korNm.value = kor_nm
+    companyNm.value = company_nm || ''
+    searchPernr.value = ''
+  } catch (err) {
+    if (err.response?.status === 404) {
+      alert('해당 사번의 사용자를 찾을 수 없습니다.')
+    } else if (err.response?.status === 403) {
+      alert('관리자 권한이 필요합니다.')
+    } else {
+      alert('조회 중 오류가 발생했습니다.')
+    }
+  } finally {
+    searching.value = false
+  }
+}
 
 const latestNoticeDate = computed(() => {
   if (!latestNotice.value || !latestNotice.value.ERDAT) return ''
@@ -261,7 +319,55 @@ onMounted(() => {
 .username-title { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin: 0; }
 .greeting-text { font-weight: 400; color: #94a3b8; font-size: 1.1rem; margin-left: 8px; }
 
-.header-actions { display: flex; gap: 12px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+
+.admin-search-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pernr-input {
+  width: 140px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.pernr-input::placeholder { color: #475569; }
+
+.pernr-input:focus {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  width: 160px;
+}
+
+.glass-btn.search {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+
+.glass-btn.search:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: #3b82f6;
+  color: white;
+}
+
+.glass-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
 .glass-btn {
   padding: 14px 24px; border-radius: 16px;
   font-weight: 700; font-size: 0.85rem;
@@ -363,6 +469,7 @@ onMounted(() => {
 .animate-stagger-2 { animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both; }
 .animate-stagger-3 { animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
 .animate-stagger-4 { animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both; }
+.animate-stagger-5 { animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both; }
 
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -1,7 +1,4 @@
-INFO:     Started server process [25364]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:4101 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51131 - "GET /api/v1/openapi.json HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -10,7 +7,99 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:55697 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56800 - "POST /api/v1/auth/delegate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56803 - "POST /api/v1/auth/delegate HTTP/1.1" 401 Unauthorized
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260531', 'PI_TO_DATE': '20260610', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A391514', 'PI_PERNR_R': 'A391514', 'PI_CALLSYS': 'P'}
+[DEBUG] SAP Success. Rows: 0
+INFO:     127.0.0.1:60156 - "GET /api/v1/cards/usages?card_num=&fr_date=20260531&to_date=20260610&pi_status=A HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260430', 'PI_TO_DATE': '20260530', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A391514', 'PI_PERNR_R': 'A391514', 'PI_CALLSYS': 'P'}
+[DEBUG] SAP Success. Rows: 2
+[DEBUG] First row sample: {'BUKRS': 'HHIN', 'CARD_NUMC': '4336920002549695', 'CARD_CODE': 'KE41', 'APPR_DATE': '20260528', 'APPR_TIME': '151526', 'APPR_NUMC': '01681109', 'STATUS': 'A', 'SEND_DATE': '20260529', 'SEQN_NUMC': '000151', 'CANC_FLAG': 'Y', 'PERNR': 'A391514', 'NAME': '김영만', 'BELNR': '1900270969', 'GJAHR': '2026', 'KOSTL': 'NJ072', 'PERPT_NM': 'HR플랫폼팀', 'STCD2': '2208155597', 'AFFI_NAME': '문화비(예스이십사도서)_이니시스', 'PEPR_NAME': '이*재', 'INDE_TYPE': 'PG일반(인증)', 'INDE_CLAS': 'PG일반(인증)', 'AFFI_ADDR': '서울 중구 통일로 92, 14-15층 (순화동,케이지타워)', 'KRW_AMT': '144000 ', 'KRW_HWBAS': '130910 ', 'KRW_HWSTE': '13090 ', 'KIND': '하나카드', 'USE_NAME': '한국조선해양', 'DOME_NAME': '국내', 'CARD_BRSCH': '550300', 'DOC_PERNR': 'A552953', 'DOC_PERNAME': '박선재', 'DOC_DATE': '20260602', 'DOC_BUDAT': '20260531', 'DOC_STATUS': '처리(결재)완료', 'DOC_HKONT': '5339551126', 'DOC_HKNAME': '도서비-경영전문도서', 'DOC_COOBJ': 'DX전략기획팀', 'DOC_TAX': '불공제', 'DOC_SGTXT': '도서비', 'BUCOD': '', 'BUCOD_NAME': ''}
+INFO:     127.0.0.1:64304 - "GET /api/v1/cards/usages?card_num=&fr_date=20260430&to_date=20260530&pi_status=A HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+INFO:     127.0.0.1:51435 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260531', 'PI_TO_DATE': '20260610', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A391514', 'PI_PERNR_R': 'A391514', 'PI_CALLSYS': 'P'}
+[DEBUG] SAP Success. Rows: 0
+INFO:     127.0.0.1:56591 - "GET /api/v1/cards/usages?fr_date=20260531&to_date=20260610&pi_status=A HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260331', 'PI_TO_DATE': '20260610', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A391514', 'PI_PERNR_R': 'A391514', 'PI_CALLSYS': 'P'}
+[DEBUG] SAP Success. Rows: 2
+[DEBUG] First row sample: {'BUKRS': 'HHIN', 'CARD_NUMC': '4336920002549695', 'CARD_CODE': 'KE41', 'APPR_DATE': '20260528', 'APPR_TIME': '151526', 'APPR_NUMC': '01681109', 'STATUS': 'A', 'SEND_DATE': '20260529', 'SEQN_NUMC': '000151', 'CANC_FLAG': 'Y', 'PERNR': 'A391514', 'NAME': '김영만', 'BELNR': '1900270969', 'GJAHR': '2026', 'KOSTL': 'NJ072', 'PERPT_NM': 'HR플랫폼팀', 'STCD2': '2208155597', 'AFFI_NAME': '문화비(예스이십사도서)_이니시스', 'PEPR_NAME': '이*재', 'INDE_TYPE': 'PG일반(인증)', 'INDE_CLAS': 'PG일반(인증)', 'AFFI_ADDR': '서울 중구 통일로 92, 14-15층 (순화동,케이지타워)', 'KRW_AMT': '144000 ', 'KRW_HWBAS': '130910 ', 'KRW_HWSTE': '13090 ', 'KIND': '하나카드', 'USE_NAME': '한국조선해양', 'DOME_NAME': '국내', 'CARD_BRSCH': '550300', 'DOC_PERNR': 'A552953', 'DOC_PERNAME': '박선재', 'DOC_DATE': '20260602', 'DOC_BUDAT': '20260531', 'DOC_STATUS': '처리(결재)완료', 'DOC_HKONT': '5339551126', 'DOC_HKNAME': '도서비-경영전문도서', 'DOC_COOBJ': 'DX전략기획팀', 'DOC_TAX': '불공제', 'DOC_SGTXT': '도서비', 'BUCOD': '', 'BUCOD_NAME': ''}
+INFO:     127.0.0.1:56170 - "GET /api/v1/cards/usages?fr_date=20260331&to_date=20260610&pi_status=A HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+INFO:     127.0.0.1:61220 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+INFO:     127.0.0.1:63784 - "GET /api/v1/budget/budget HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+INFO:     127.0.0.1:62089 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A391514, is_admin: True
+INFO:     127.0.0.1:57780 - "POST /api/v1/auth/delegate HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -19,10 +108,7 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260430', 'PI_TO_DATE': '20260513', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A509166', 'PI_PERNR_R': 'A509166', 'PI_CALLSYS': 'P'}
-[DEBUG] SAP Success. Rows: 8
-[DEBUG] First row sample: {'BUKRS': 'HHIN', 'CARD_NUMC': '4336920004216764', 'CARD_CODE': 'KE41', 'APPR_DATE': '20260511', 'APPR_TIME': '103733', 'APPR_NUMC': '13608108', 'STATUS': 'B', 'SEND_DATE': '20260512', 'SEQN_NUMC': '000049', 'CANC_FLAG': 'Y', 'PERNR': 'A509166', 'NAME': '이태진', 'BELNR': '', 'GJAHR': '0000', 'KOSTL': 'NA072', 'PERPT_NM': '', 'STCD2': '3148210024', 'AFFI_NAME': '철도승차권  발매', 'PEPR_NAME': '한*희', 'INDE_TYPE': '철도', 'INDE_CLAS': '철도', 'AFFI_ADDR': '대전 동구 중앙로 240 (소제동)', 'KRW_AMT': '74900 ', 'KRW_HWBAS': '68091 ', 'KRW_HWSTE': '6809 ', 'KIND': '하나카드', 'USE_NAME': '한국조선해양', 'DOME_NAME': '국내', 'CARD_BRSCH': '630300', 'DOC_PERNR': '', 'DOC_PERNAME': '', 'DOC_DATE': '00000000', 'DOC_BUDAT': '00000000', 'DOC_STATUS': '비용처리 전', 'DOC_HKONT': '', 'DOC_HKNAME': '', 'DOC_COOBJ': '', 'DOC_TAX': '', 'DOC_SGTXT': '', 'BUCOD': '', 'BUCOD_NAME': ''}
-INFO:     127.0.0.1:58751 - "GET /api/v1/cards/usages?card_num=&fr_date=20260430&to_date=20260513&pi_status=A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58623 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -31,10 +117,54 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260430', 'PI_TO_DATE': '20260513', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A509166', 'PI_PERNR_R': 'A509166', 'PI_CALLSYS': 'P'}
-[DEBUG] SAP Success. Rows: 8
-[DEBUG] First row sample: {'BUKRS': 'HHIN', 'CARD_NUMC': '4336920004216764', 'CARD_CODE': 'KE41', 'APPR_DATE': '20260511', 'APPR_TIME': '103733', 'APPR_NUMC': '13608108', 'STATUS': 'B', 'SEND_DATE': '20260512', 'SEQN_NUMC': '000049', 'CANC_FLAG': 'Y', 'PERNR': 'A509166', 'NAME': '이태진', 'BELNR': '', 'GJAHR': '0000', 'KOSTL': 'NA072', 'PERPT_NM': '', 'STCD2': '3148210024', 'AFFI_NAME': '철도승차권  발매', 'PEPR_NAME': '한*희', 'INDE_TYPE': '철도', 'INDE_CLAS': '철도', 'AFFI_ADDR': '대전 동구 중앙로 240 (소제동)', 'KRW_AMT': '74900 ', 'KRW_HWBAS': '68091 ', 'KRW_HWSTE': '6809 ', 'KIND': '하나카드', 'USE_NAME': '한국조선해양', 'DOME_NAME': '국내', 'CARD_BRSCH': '630300', 'DOC_PERNR': '', 'DOC_PERNAME': '', 'DOC_DATE': '00000000', 'DOC_BUDAT': '00000000', 'DOC_STATUS': '비용처리 전', 'DOC_HKONT': '', 'DOC_HKNAME': '', 'DOC_COOBJ': '', 'DOC_TAX': '', 'DOC_SGTXT': '', 'BUCOD': '', 'BUCOD_NAME': ''}
-INFO:     127.0.0.1:62644 - "GET /api/v1/cards/usages?card_num=&fr_date=20260430&to_date=20260513&pi_status=A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54353 - "POST /api/v1/auth/delegate HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A592685, is_admin: True
+[DEBUG] Calling XFI00250 with: {'PI_CARD_NUMC': '', 'PI_FR_DATE': '20260531', 'PI_TO_DATE': '20260610', 'PI_STATUS': 'A', 'PI_PERNR_O': 'A592685', 'PI_PERNR_R': 'A592685', 'PI_CALLSYS': 'P'}
+[DEBUG] SAP returned empty/None
+INFO:     127.0.0.1:56313 - "GET /api/v1/cards/usages?fr_date=20260531&to_date=20260610&pi_status=A HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A592685, is_admin: True
+INFO:     127.0.0.1:63511 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A592685, is_admin: True
+INFO:     127.0.0.1:57083 - "GET /api/v1/budget/budget HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A592685, is_admin: True
+INFO:     127.0.0.1:65284 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('BP26475', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[DEBUG AUTH] User: BP26475, target_pernr: A592685, is_admin: True
+INFO:     127.0.0.1:64579 - "POST /api/v1/auth/delegate HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -43,7 +173,7 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:52424 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55145 - "GET /api/v1/budget/budget HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -52,7 +182,7 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:56720 - "GET /api/v1/contacts/list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57090 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
 [DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
 [SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
 FROM users 
@@ -61,112 +191,8 @@ WHERE users.username = ?
 [parameters: ('BP26475', 1, 0)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:60175 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:65036 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:61289 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:64206 - "GET /api/v1/admin/users HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:60992 - "GET /api/v1/admin/contacts HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60993 - "GET /api/v1/admin/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:59735 - "PUT /api/v1/admin/notices/1 HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:53776 - "GET /api/v1/admin/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:65125 - "PUT /api/v1/admin/contacts/1 HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:62616 - "GET /api/v1/admin/contacts HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:52661 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:60635 - "GET /api/v1/contacts/list HTTP/1.1" 200 OK
-[DEBUG AUTH] DB Query Error: (sqlite3.OperationalError) no such table: users
-[SQL: SELECT users.id AS users_id, users.username AS users_username, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
-FROM users 
-WHERE users.username = ?
- LIMIT ? OFFSET ?]
-[parameters: ('BP26475', 1, 0)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[DEBUG AUTH] User: BP26475, target_pernr: A509166, is_admin: True
-INFO:     127.0.0.1:61036 - "GET /api/v1/notices/notices HTTP/1.1" 200 OK
+[DEBUG SAP] result type=<class 'list'>
+[DEBUG SAP] first row keys=['BUKRS', 'NAME', 'POSI', 'DEPT', 'TEL', 'WORK', 'PART', 'COMT']
+[DEBUG SAP] first row={'BUKRS': '', 'NAME': '최석순|최석순|최석순', 'POSI': '책임매니저|책임매니저|책임매니저', 'DEPT': '재무ERP팀|재무ERP팀|재무ERP팀', 'TEL': '02-479-5390|02-479-5390|02-479-5390', 'WORK': '(전산)', 'PART': '법인카드 이용내역', 'COMT': '법인카드 내역 조회, 비용처리 및 취소 시스템 관리'}
+[DEBUG SAP] parsed contacts: 5
+INFO:     127.0.0.1:50123 - "GET /api/v1/contacts/list HTTP/1.1" 200 OK
