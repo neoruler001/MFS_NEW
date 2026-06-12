@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.production
+backend/.env
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.nuxt/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+backend/*.log
+
+# Harness analysis artifacts (may contain sensitive values from source analysis)
+_workspace/
+_workspace_prev/
