@@ -1,7 +1,12 @@
 @echo off
-echo MFS Wiki Server
-echo ===============
-echo http://localhost:4200
-echo Ctrl+C 로 종료
+echo MFS Wiki 서버 시작 중...
 echo.
-python -m http.server 4200
+
+REM Python으로 간단한 HTTP 서버 실행
+echo http://localhost:3000 에서 실행됩니다.
+echo 종료하려면 Ctrl+C 를 누르세요.
+echo.
+
+python -m http.server 3000
+
+pause

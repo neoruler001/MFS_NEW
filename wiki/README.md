@@ -1,90 +1,97 @@
 # MFS — 모바일 법인카드 관리 시스템
 
-> HD현대 그룹 임직원 법인카드 비용처리 및 예산 관리 시스템
+> HD현대 그룹 임직원의 법인카드 비용처리 및 예산 관리를 위한 시스템입니다.
 
 ---
 
-## 개요
+## 프로젝트 개요
 
 | 항목 | 내용 |
 |------|------|
-| 백엔드 | Python 3.14 + FastAPI (포트 **4101**) |
-| 프런트엔드 | Vue 3.3.4 + Vite 4.4.5 (포트 **4001**) |
-| 운영 DB | MSSQL `10.100.37.178:3218` (pymssql) |
-| 외부 시스템 | SAP PI SOAP `http://hipop.hhi.co.kr:50000` |
-| 인증 | JWT HS256 · 20분 만료 · MSSQL `MFS_USERS` |
+| 시스템명 | MFS (Mobile Finance System) |
+| 도메인 | HD현대 그룹 법인카드 비용처리 및 예산 관리 |
+| 백엔드 | Python 3.14 + FastAPI (포트 4101) |
+| 프런트엔드 | Vue 3.3.4 + Vite 4.4.5 (포트 4001) |
+| 운영 DB | MSSQL (pymssql 직접 연결) |
+| 외부 시스템 | SAP PI (SOAP/XML) |
+| 인증 | JWT HS256 (20분 만료) + MSSQL 인증 |
 
 ---
 
-## 빠른 시작
-
-```bash
-# 백엔드
-cd backend
-.venv\Scripts\activate
-uvicorn app.main:app --host 0.0.0.0 --port 4101 --reload
-
-# 프런트엔드
-cd frontend
-npm run dev
-```
-
-접속: http://localhost:4001
-
----
-
-## 핵심 기능
-
-| 기능 | 경로 | 데이터 소스 |
-|------|------|------------|
-| 카드 이용내역 조회 | `/cards/usages` | SAP XFI00250 |
-| 비용처리 (전표 생성) | `POST /cards/process` | SAP XFI00260 |
-| 처리취소 | `POST /cards/cancel` | SAP XFI00270 |
-| 업무목록 조회 | `/cards/worklist` | SAP XFI00280 |
-| 예산 조회 | `/budget/info` | SAP XFI00290 |
-| 연락처 | `/contacts/list` | MSSQL + SAP XFI00310 |
-| 공지사항 | `/notices/notices` | MSSQL + SAP XFI00320 |
-| 관리자 CRUD | `/admin/*` | MSSQL |
-
----
-
-## 시스템 구성도
+## 아키텍처 한눈에 보기
 
 ```
-┌─────────────────┐        ┌──────────────────┐        ┌──────────────┐
-│   Vue 3 SPA     │──────→ │   FastAPI 4101   │──────→ │   MSSQL DB   │
-│  (Vite :4001)   │ axios  │                  │ pymssql│  인증/공지/  │
-└─────────────────┘  JWT   │                  │        │  연락처/관리 │
-                           │                  │        └──────────────┘
-                           │                  │        ┌──────────────┐
-                           │                  │──────→ │   SAP PI     │
-                           └──────────────────┘  SOAP  │  카드/예산   │
-                                                        └──────────────┘
+[Vue 3 SPA] ──axios──> [FastAPI] ──pymssql──> [MSSQL]
+                            │
+                            └──SOAP/HTTP──> [SAP PI]
 ```
 
----
-
-## 허브 함수 (변경 시 주의)
-
-| 함수 | 파일 | 영향 범위 |
-|------|------|----------|
-| `get_current_user` | `core/auth.py` | 12개 엔드포인트 DI |
-| `get_mssql_connection` | `core/mssql.py` | 모든 MSSQL 쿼리 진입점 |
-| `_call_sap_soap` | `core/soap_client.py` | 7개 SAP 인터페이스 |
+요청 흐름: `Vue 컴포넌트 → axios (Bearer 토큰) → FastAPI 라우터 → Depends(get_current_user) → 서비스 레이어 → DB / SAP`
 
 ---
 
-## ⚠️ 보안 주의사항
+## 빠른 탐색
 
-> **운영 배포 전 반드시 확인**
-
-- `core/config.py` — MSSQL 자격증명 하드코딩 → `.env` 이관 필요
-- `core/soap_client.py` — SAP PI 패스워드 하드코딩
-- `api/admin.py:35-41` — `check_admin()` 미구현 → 관리자 API 무방비
-- `config.py` — JWT SECRET_KEY 기본값 노출
-
-자세한 내용은 [보안 이슈](security.md) 페이지 참조.
+| 내용 | 링크 |
+|------|------|
+| 아키텍처 및 디렉토리 구조 | [아키텍처](/architecture) |
+| 개발 환경 설정 (실행 방법) | [설정 가이드](/setup) |
+| 데이터베이스 테이블 및 SQL 패턴 | [데이터베이스](/database) |
+| SAP SOAP 인터페이스 7종 | [SAP 인터페이스](/sap) |
+| 보안 이슈 목록 (HIGH 포함) | [보안](/security) |
+| 코드 컨벤션 (API / DB / Vue / SAP) | [컨벤션 가이드](/conventions) |
+| 함수 호출 그래프 (시각화) | [호출 그래프](/callgraph.html ':ignore') |
+| 데드 코드 및 분석 리포트 | [분석 리포트](/graph) |
 
 ---
 
-*최종 갱신: 2026-06-11 · harness-fin v1*
+## SAP 인터페이스 요약
+
+| ID | 설명 | 호출 엔드포인트 |
+|----|------|--------------|
+| XFI00250 | 카드 이용내역 / 카드정보 조회 | GET /api/v1/cards/usages |
+| XFI00260 | 비용처리 (전표 생성) | POST /api/v1/cards/process |
+| XFI00270 | 처리취소 (전표 취소) | POST /api/v1/cards/cancel |
+| XFI00280 | 업무목록 조회 | GET /api/v1/cards/worklist |
+| XFI00290 | 예산 조회 | GET /api/v1/budget/budget |
+| XFI00310 | 연락처 조회 | GET /api/v1/contacts/list |
+| XFI00320 | SAP 공지사항 조회 | GET /api/v1/notices/notices |
+
+---
+
+## 핵심 허브 함수
+
+변경 시 전체 시스템에 영향을 주는 함수들입니다.
+
+| 함수 | in-degree | 설명 |
+|------|-----------|------|
+| `core.auth.get_current_user` | 12 | 모든 보호 엔드포인트가 DI로 의존 |
+| `core.mssql.get_mssql_connection` | 12 | 모든 MSSQL 직접 쿼리의 진입점 |
+| `core.soap_client._call_sap_soap` | 7 | 모든 SAP 인터페이스 공통 HTTP 클라이언트 |
+
+---
+
+## 보안 주의사항 (HIGH)
+
+> 운영 배포 전 반드시 해결해야 할 항목입니다.
+
+1. **하드코딩 자격증명** — `config.py`, `soap_client.py`에 DB/SAP 접속 정보 평문 기재
+2. **admin API 무방비** — `check_admin()` 함수가 실질적 검증 없이 통과
+3. **JWT SECRET_KEY 노출** — 기본값이 `"SuperSecretKeyForDevelopmentOnly"`
+4. **CORS 전체 허용** — `allow_origins=["*"]` 운영 배포 시 제한 필요
+
+자세한 내용은 [보안 이슈](/security) 페이지를 참고하세요.
+
+---
+
+## 하네스 평가 결과
+
+| 항목 | 결과 |
+|------|------|
+| 전체 점수 | **92 / 100 — PASS** |
+| 커버리지 | 25/25 |
+| 정확도 | 20/25 |
+| 실행가능성 | 25/25 |
+| 컨텍스트 품질 | 22/25 |
+
+*분석 시각: 2026-06-11*

@@ -1,5 +1,9 @@
 - [홈](/)
-- [API](api/auth.md)
-- [SAP](sap.md)
-- [DB](database.md)
-- [보안](security.md)
+- API 문서
+  - [인증](/api/auth)
+  - [카드 이용내역](/api/card-usage)
+  - [공지사항](/api/notice)
+  - [예산](/api/budget)
+  - [연락처](/api/contact)
+  - [관리자](/api/admin)
+- [호출 그래프](/callgraph.html ':ignore')

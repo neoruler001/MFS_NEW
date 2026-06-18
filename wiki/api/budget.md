@@ -1,36 +1,51 @@
-# 예산 API
+# 예산 API — /api/v1/budget
 
-**Base path:** `/api/v1/budget`  
-**파일:** `backend/app/api/budget.py`  
-**데이터 소스:** SAP ERP (SOAP XFI00290)
-
-> JWT 인증 필요
+**파일**: `backend/app/api/budget.py`  
+**SAP 인터페이스**: XFI00290
 
 ---
 
-## GET /info
+## GET /api/v1/budget/budget
 
-사원별 예산 정보 조회.
+예산 현황을 조회합니다.
 
-**SAP 인터페이스:** `XFI00290`
+**인증 필요**: 예
 
-### 내부 처리
+### 요청 파라미터 (Query)
 
-```python
-current_user = Depends(get_current_user)
-# JWT의 target_pernr를 SAP 파라미터로 전달
-# → 대리 조회 시 위임된 대상 사번이 사용됨
-result = soap_client.call_xfi00290(pernr=current_user.target_pernr)
+| 파라미터 | 타입 | 기본값 | 설명 |
+|---------|------|--------|------|
+| bukrs | string | `""` | 회사 코드 |
+| objnr | string | `""` | 오브젝트 번호 |
+| objty | string | `""` | 오브젝트 타입 |
+| kstar | string | `""` | 비용 원소 |
+| gjahr | string | `""` | 회계연도 (YYYY) |
+| i_system | string | `""` | 시스템 구분 |
+
+### 응답 (200 OK)
+
+```json
+{
+  "...": "..."
+}
 ```
 
-### 응답
+> ⚠️ XFI00290의 응답 구조는 동적입니다. 런타임에 키를 탐색하며, 실제 SAP 응답에 따라 구조가 다를 수 있습니다.
 
-SAP XFI00290 반환값 그대로 전달 (구조는 SAP 인터페이스 정의 참조).
+### 처리 흐름
 
----
-
-## 참고
-
-예산 데이터는 전적으로 SAP ERP에서 관리된다. MSSQL에는 예산 관련 테이블이 없다.
-
-대리 조회 시나리오: 관리자가 `/auth/delegate`로 위임 토큰을 발급받으면, 이후 예산 조회도 대상 사번 기준으로 실행된다.
+```
+read_budget()
+  → get_current_user()     [JWT에서 target_pernr 추출]
+  → call_xfi00290({
+      PI_BUKRS: bukrs,
+      PI_PERNR: current_user.target_pernr,
+      PI_OBJNR: objnr,
+      PI_OBJTY: objty,
+      PI_KSTAR: kstar,
+      PI_GJAHR: gjahr,
+      I_SYSTEM: i_system,
+      PI_CALLSYS: 'P'
+    })
+  ← SAP 응답 그대로 반환
+```

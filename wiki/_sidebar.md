@@ -1,29 +1,21 @@
-- **시작하기**
-  - [홈](README.md)
-  - [개발 환경 설정](setup.md)
-
-- **아키텍처**
-  - [시스템 구조](architecture.md)
-  - [요청 흐름](architecture.md#요청-흐름)
-  - [데이터 접근 패턴](architecture.md#데이터-접근-패턴)
-
+- [홈](/)
+- **시스템 개요**
+  - [아키텍처](/architecture)
+  - [개발 환경 설정](/setup)
+  - [보안 이슈](/security)
+- **데이터**
+  - [데이터베이스 (MSSQL)](/database)
+  - [SAP 인터페이스](/sap)
+- **코드 컨벤션**
+  - [컨벤션 가이드](/conventions)
 - **API 레퍼런스**
-  - [인증 (Auth)](api/auth.md)
-  - [카드 이용내역 (Cards)](api/card-usage.md)
-  - [예산 (Budget)](api/budget.md)
-  - [공지사항 (Notice)](api/notice.md)
-  - [연락처 (Contact)](api/contact.md)
-  - [관리자 (Admin)](api/admin.md)
-
-- **외부 시스템**
-  - [SAP SOAP 인터페이스](sap.md)
-
-- **데이터베이스**
-  - [MSSQL 스키마 & 쿼리](database.md)
-
-- **개발 가이드**
-  - [코드 컨벤션](conventions.md)
-  - [보안 이슈 & 개선](security.md)
-
-- **시각화**
-  - [📊 호출 그래프](graph.md)
+  - [인증 — /api/v1/auth](/api/auth)
+  - [카드 이용내역 — /api/v1/cards](/api/card-usage)
+  - [공지사항 — /api/v1/notices](/api/notice)
+  - [예산 — /api/v1/budget](/api/budget)
+  - [연락처 — /api/v1/contacts](/api/contact)
+  - [관리자 — /api/v1/admin](/api/admin)
+- **분석 리포트**
+  - [호출 그래프 (시각화)](/callgraph.html ':ignore')
+  - [데드 코드 현황](/graph)
+  - [하네스 평가 리포트](/harness-report)
